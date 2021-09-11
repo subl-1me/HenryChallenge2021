@@ -48,8 +48,6 @@ function ingredienteEnMalEstado(menu, comida, ingrediente) {
         }
     }
 
-    console.log(Object.values(menu)[index]);
-
     for(let i = 0; i < Object.values(menu).length; i++){
         if(ingrediente == Object.values(menu)[i]){
             ingredientesEncontrados[0] = Object.values(menu)[i-1];
@@ -209,14 +207,6 @@ function crearClaseAlumno() {
             ];
             this.notasCheckpoints = [
             ];
-            /*var _apellido = apellido;
-            var _cohorte = cohorte;
-            const _grupoDeAmigos = [
-                {nombre: _nombre},
-                {apellido: _apellido},
-                {cohorte: _cohorte}
-            ]
-            const _notasCheckpoints = {};*/
         };
 
         addAmigos(nombre, apellido) {
