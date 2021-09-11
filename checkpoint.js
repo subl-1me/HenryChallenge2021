@@ -57,18 +57,6 @@ function ingredienteEnMalEstado(menu, comida, ingrediente) {
             ingredienteEnMalEstado[2] = Object.values(menu)[i+1];
         }
     }
-
-
-    var tempIndex = 0;
-    /*for(let i = 0; i < Object.values(menu)[index].length; i++){
-        if(ingrediente = Object.values(menu)[index]){
-            for(let j = i - 1; j < Object.values(menu)[index].length; j++){
-                ingredientesEncontrados[tempIndex] = Object.values(menu)[j];
-                tempIndex++;
-            }
-            break;
-        }
-    }*/
     
     return ingredientesEncontrados;
 };
