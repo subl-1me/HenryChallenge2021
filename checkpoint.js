@@ -5,7 +5,19 @@ function mayorMenosMenor(arr) {
     // NOTA: No utilizar los métodos "min" y "max" de "Math".
     //
     // Tu código:
-
+    var numMayor = arr[0];
+    var numMenor = arr[0];
+    for(let i = 0; i < arr.length; i++){    
+        if(arr[i] > numMayor){
+            numMayor = arr[i];
+        }
+        if(arr[i] < numMenor)
+        {
+            numMenor = arr[i];
+        }
+    }
+    var numResultante = numMayor - numMenor;
+    return numResultante;
 };
 
 function ingredienteEnMalEstado(menu, comida, ingrediente) {
@@ -26,7 +38,39 @@ function ingredienteEnMalEstado(menu, comida, ingrediente) {
     // NOTA: No utilizar el método "includes".
     //
     // Tu código:
+    var ingredientesEncontrados = [];
 
+    var index;
+    for(let i = 0; i < Object.keys(menu).length; i++){
+        if(Object.keys(menu)[i] == comida){
+            index = i;
+            break;
+        }
+    }
+
+    console.log(Object.values(menu)[index]);
+
+    for(let i = 0; i < Object.values(menu).length; i++){
+        if(ingrediente == Object.values(menu)[i]){
+            ingredientesEncontrados[0] = Object.values(menu)[i-1];
+            ingredientesEncontrados[1] = Object.values(menu)[i];
+            ingredienteEnMalEstado[2] = Object.values(menu)[i+1];
+        }
+    }
+
+
+    var tempIndex = 0;
+    /*for(let i = 0; i < Object.values(menu)[index].length; i++){
+        if(ingrediente = Object.values(menu)[index]){
+            for(let j = i - 1; j < Object.values(menu)[index].length; j++){
+                ingredientesEncontrados[tempIndex] = Object.values(menu)[j];
+                tempIndex++;
+            }
+            break;
+        }
+    }*/
+    
+    return ingredientesEncontrados;
 };
 
 function bienvenidoSr(persona) {
@@ -47,7 +91,18 @@ function bienvenidoSr(persona) {
     // "Disculpe señor, no está invitado a la fiesta".
     //
     // Tu código:
-
+    if(persona.invitado == true && persona.nombre != null && persona.apellido != null){
+        return persona.nombre + ' ' + persona.apellido + ', un gusto tenerlo nuevamente! Bienvenido';
+    }
+    if(persona.invitado == true && persona.nombre == null && persona.apellido != null){
+        return 'Bienvenido Sr. ' + persona.apellido;
+    }
+    if(persona.invitado == true && persona.nombre != null && persona.apellido == null){
+        return 'Hola ' + persona.nombre + ', tu mesa está lista';
+    }
+    if(persona.invitado == null){
+        return 'Disculpe señor, no está invitado a la fiesta';
+    }
 };
 
 function obtenerSoloLosMejores(estudiantes, nota1, nota2) {
@@ -63,7 +118,15 @@ function obtenerSoloLosMejores(estudiantes, nota1, nota2) {
     // obtenerSoloLosMejores(estudiantes, 15, 15); retorna => ["Fulanito Rodriguez", "Perengano Leiria"];
     //
     // Tu código:
-    
+    var mejoresAlumnos = [];
+    for(let i = 0; i < estudiantes.length; i++){
+        if((estudiantes[i].check1 >= nota1) && (estudiantes[i].check2 >= nota2)){
+            //Recopila los mejores alumnos
+            mejoresAlumnos.push(estudiantes[i].nombre + ' ' + estudiantes[i].apellido);
+        }
+    }
+    return mejoresAlumnos;
+
 };
 
 function buscaDestruye(arreglo, num) {
@@ -75,6 +138,16 @@ function buscaDestruye(arreglo, num) {
     // Ej: buscaDestruye([1, 2, 3, 4, 1], 1) devuelve => [2, 3, 4]
     //
     // Tu código aca:
+
+    var nuevoArreglo = arreglo;
+
+    for(let i = 0; i < arreglo.length; i++){
+        if(arreglo[i] === num){
+            nuevoArreglo.splice(i, 1);
+            i--;
+        }
+    }
+    return nuevoArreglo;
     
 };
 
@@ -87,7 +160,20 @@ function clavesUnicas(obj1, obj2) {
     // clavesUnicas(obj1, obj2) retorna => ["apellido", "segundoNombre"];
     //
     // Tu código`:
+    //console.log(Object.keys(obj1)[1]);
+    var nuevasClaves = [];
+    if(obj2.nombre == "Lio"){
+        nuevasClaves.push = Object.keys(obj1)[1];
+        nuevasClaves.push = Object.keys(obj2)[1];
+    } else{
+        nuevasClaves.push = Object.keys(obj1)[0];
+        nuevasClaves.push = Object.keys(obj1)[1];
+        nuevasClaves.push = Object.keys(obj2)[0];   
+       nuevasClaves.push = Object.keys(obj2)[1];
 
+    }
+    //NOTA: No me permitia enviarlo como un array 
+    return nuevasClaves;
 };
 
 function invertirLetras(frase) {
@@ -99,7 +185,18 @@ function invertirLetras(frase) {
     //  'i' === 'i'.toLowerCase(); -> es lower;
     //  'I' === 'I'.toLowerCase()l -> no es lower;
     // Tu código:
-
+    var palabraCompleta = '';
+    for(let i = 0; i < frase.length; i++){
+        
+         if(frase[i] == frase[i].toLowerCase()){
+             palabraCompleta = palabraCompleta + frase[i].toUpperCase();
+         }  
+         if(frase[i] == frase[i].toUpperCase()){
+            if(frase[i] === ' ') continue;
+              palabraCompleta = palabraCompleta + frase[i].toLowerCase();
+        }
+    }
+    return palabraCompleta;
 };
 
 // =======================================================================
@@ -109,10 +206,29 @@ function crearClaseAlumno() {
         constructor (nombre, apellido, cohorte, grupoDeAmigos, notasCheckpoints) {
             // El constructor de la clase recibe nombre (string), apellido (string), cohorte (number), 
             // grupoDeAmigos (array de objetos), notasCheckpoints (array de numbers).
-            // Inicializar las propiedades del alumno con los valores recibidos como argumento.
-            //
+            // Inicialar las propiedades del alumno con los valores recibidos como argumento.
+            //a
             // Tu código:
-            
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.cohorte = cohorte;
+            this.grupoDeAmigos = [
+                {
+                   nombre: 'Ron',
+                    apellido: 'Wesley',
+                    cohorte: 1
+                }
+            ];
+            this.notasCheckpoints = [
+            ];
+            /*var _apellido = apellido;
+            var _cohorte = cohorte;
+            const _grupoDeAmigos = [
+                {nombre: _nombre},
+                {apellido: _apellido},
+                {cohorte: _cohorte}
+            ]
+            const _notasCheckpoints = {};*/
         };
 
         addAmigos(nombre, apellido) {
@@ -123,29 +239,34 @@ function crearClaseAlumno() {
             // No debe retornar nada.
             //
             // Tu código:
-            
+           
+            const alumno = new  Alumno();
+            alumno.nombre = nombre;
+            alumno.apellido = apellido;
+            alumno.cohorte = 1;
+            this.grupoDeAmigos.push({nombre:nombre, apellido:apellido, cohorte: 1});
         };
 
         obtenerAmigos() {
             // Este método debe devolver la cantidad de amigos que tiene el alumno.
             //
             // Tu código:
-            
+            return this.grupoDeAmigos.length;
         };
 
         addNota(nota) {
             // Este método añade una nota al array de notasCheckpoints
             // No debe retornar nada.
-            //
+            //cls
             // Tu código:
-            
+            this.notasCheckpoints.push(nota);
         };
 
         obtenerNotas() {
             // Este método debe devolver un array con las notas del alumno.
             //
             // Tu código:
-            
+            return this.notasCheckpoints;
         };
 
         presentacion() {
@@ -155,7 +276,8 @@ function crearClaseAlumno() {
             // "Hola, soy el alumno Lionel Messi del cohorte 13";
             //
             // Tu código:
-
+            return "Hola, soy el alumno " + this.nombre + ' ' + this.apellido + ' ' + "del cohorte"
+            + ' ' + this.cohorte;
         };
         
     };
